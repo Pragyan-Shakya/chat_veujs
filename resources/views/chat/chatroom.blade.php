@@ -15,19 +15,8 @@
                         </div>--}}
                     </div>
                     <div class="panel-body msg_container_base">
-                        <div class="row msg_container base_sent">
-                            <div class="col-md-10 col-xs-10">
-                                <div class="messages msg_sent">
-                                    <p>that mongodb thing looks good, huh?
-                                        tiny master db, and huge document store</p>
-                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-xs-2 avatar profile-pic">
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive">
-                            </div>
-                        </div>
-                        <div class="row msg_container base_receive">
+                        <messages></messages>
+                        {{--<div class="row msg_container base_receive">
                             <div class="col-md-2 col-xs-2 avatar profile-pic">
                                 <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive">
                             </div>
@@ -38,7 +27,7 @@
                                     <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
 
                     <div class="panel-footer">
@@ -53,4 +42,5 @@
             </div>
         </div>
     </div>
+
 @stop

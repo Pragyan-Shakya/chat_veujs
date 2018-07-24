@@ -26,4 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected function chatrooms(){
+        return $this->hasMany('App\Model\Chatroom', 'user_id', 'id');
+    }
 }

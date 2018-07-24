@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('chat/chatroom');
 });
 
 Auth::routes();
 
-Route::group(['namespace' => 'chat'], function () {
+Route::group(['namespace' => 'chat', 'middleware' => 'auth'], function () {
     Route::resources([
         'chatroom' => 'ChatRoomController',
     ]);
