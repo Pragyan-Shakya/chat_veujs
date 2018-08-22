@@ -27,7 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected function chatrooms(){
-        return $this->hasMany('App\Model\Chatroom', 'user_id', 'id');
+    public function friendsOfMine(){
+        return $this->belongsToMany(Self::class, 'friends', 'user_id', 'friend_id');
+    }
+
+    public function friendsOf(){
+        return $this->belongsToMany(Self::class, 'friends', 'friend_id', 'user_id');
+    }
+
+    public function friends(){
+        return $this->friendsOfMine->merge($this->friendsOf);
     }
 }

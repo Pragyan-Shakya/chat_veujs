@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         \App\User::firstOrCreate([
             'name' => 'Pragyan',
             'email' => 'pragyan7shakya@gmail.com',
-            'password' => bcrypt('pragyan'),
+            'password' => bcrypt('Pragyan'),
         ]);
     }
 }

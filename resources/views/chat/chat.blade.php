@@ -1,5 +1,4 @@
 @extends('chat.master')
-@section('meta') <meta name="friend_id" content="{!! $friendId !!}"> @stop
 @section('title') ChatRoom @stop
 @section('content')
     <div class="container app">
@@ -33,7 +32,7 @@
                     <div class="row sideBar">
                         @forelse($friends as $friend)
                             <a href="{!! route('chat.getMyFriend', $friend->id) !!} ">
-                                <div class="{!! $friend->id == $friendId?'active':'' !!} row sideBar-body">
+                                <div class="row sideBar-body">
                                     <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                         <div class="avatar-icon">
                                             <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
@@ -82,22 +81,22 @@
                     <div class="row compose-sideBar">
                         @forelse($users as $user)
                             <div class="row sideBar-body">
-                            <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                </div>
-                            </div>
-                            <div class="col-sm-9 col-xs-9 sideBar-main">
-                                <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                        <span class="name-meta">{!! $user->name !!}</span>
-                                    </div>
-                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                        <span class="time-meta pull-right">18:18</span>
+                                <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                    <div class="avatar-icon">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
                                     </div>
                                 </div>
+                                <div class="col-sm-9 col-xs-9 sideBar-main">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-8 sideBar-name">
+                                            <span class="name-meta">{!! $user->name !!}</span>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                            <span class="time-meta pull-right">18:18</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                         @empty
                             <h1>Nothing to display</h1>
                         @endforelse
@@ -106,23 +105,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-8 conversation">
-                <div class="row heading">
 
-                    <div class="col-sm-8 col-xs-7 heading-name">
-                        <a class="heading-name-meta">{!! $friendName !!}
-                        </a>
-                        <span class="heading-online">Online</span>
-                    </div>
-                    <div class="col-sm-1 col-xs-1  heading-dot pull-right">
-                        <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-                {{--message-list--}}
-                <message-list></message-list>
-                {{--create-message--}}
-                <create-message></create-message>
-            </div>
         </div>
     </div>
 
@@ -445,6 +428,7 @@
     .message {
     padding: 5px !important;
     margin: 0 !important;
+    background: url("w.jpg") no-repeat fixed center;
     background-size: cover;
     overflow-y: auto;
     border: 1px solid #f7f7f7;
@@ -714,8 +698,5 @@
     }
     .row{
         display: block;
-    }
-    .active{
-    background-color: #999;
     }
 @stop

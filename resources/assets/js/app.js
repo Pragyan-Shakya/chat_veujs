@@ -15,8 +15,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.prototype.$eventBus = new Vue();
+
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('messages', require('./components/messages.vue'));
+Vue.component('message-list', require('./components/chat/message-list.vue'));
+Vue.component('create-message', require('./components/chat/create-message.vue'));
 
 const app = new Vue({
     el: '#app'
