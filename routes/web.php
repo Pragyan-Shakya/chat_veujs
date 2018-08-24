@@ -24,4 +24,6 @@ Route::group(['namespace' => 'Api', 'middleware' => 'auth', 'as' => 'api.'], fun
     Route::get('selected-friend/{friend_id}', 'ApiController@getSelectedFriend')->name('selectedFriend');
     Route::get('user-detail', 'ApiController@getAuthUser')->name('authUser');
     Route::post('store-message', 'ApiController@storeMessage')->name('storeMessage');
+    Route::get('add-friends', 'ApiController@listOfUsers')->name('addFriends');
+    Route::post('add-friend', 'ApiController@addFriend')->name('addFriend');
 });

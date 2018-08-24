@@ -27,6 +27,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function pathToPhoto($path)
+    {
+        if (filter_var($path, FILTER_VALIDATE_URL)) {
+            $path_ = $path;
+        } else {
+            $path_ = $path ? url('/') . '/' . $path : "";
+        }
+        return $path_;
+    }
+
+    public function getFullPhotoPath()
+    {
+        $static_photo_path = asset('dummy-user-photo.png');
+        return $this->pathToPhoto(
+            $this->photo ? $this->photo : $static_photo_path
+        );
+    }
+
     public function friendsOfMine(){
         return $this->belongsToMany(Self::class, 'friends', 'user_id', 'friend_id');
     }

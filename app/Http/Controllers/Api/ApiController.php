@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\BroadcastMessages;
+use App\Models\Friend;
 use App\Models\Message;
 use App\User;
 use function foo\func;
@@ -13,6 +14,27 @@ use Illuminate\Support\Facades\Auth;
 class ApiController extends Controller
 {
     //
+    public function listOfUsers()
+    {
+
+        return response()->json(['users' => User::get()], 200);
+    }
+
+    public function addFriend(Request $request)
+    {
+        $this->validate($request, [
+           'user_id' => 'required',
+           'friend_id' => 'required',
+        ]);
+
+        $friend = Friend::create([
+            'user_id' => $request->input('user_id'),
+            'friend_id' => $request->input('friend_id'),
+        ]);
+
+       return response()->json(['friend'=>$friend], 200);
+    }
+
     public function fetchMessages($friend_id)
     {
         $user_id = Auth::id();
@@ -37,15 +59,18 @@ class ApiController extends Controller
         return response()->json(['messages' => $messages], 200);
     }
 
-    public function getSelectedFriend($friend_id){
+    public function getSelectedFriend($friend_id)
+    {
         return response()->json(['friend' => User::find($friend_id)], 200);
     }
 
-    public function getAuthUser(){
+    public function getAuthUser()
+    {
         return response()->json(['user' => Auth::user()], 200);
     }
 
-    public function storeMessage(Request $request){
+    public function storeMessage(Request $request)
+    {
         $this->validate($request, [
             'user_id' => 'required',
             'message' => 'required',

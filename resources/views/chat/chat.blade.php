@@ -11,11 +11,20 @@
                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
                             </div>
                         </div>
-                        <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
-                            <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+                        <div class="col-sm-3 col-xs-3  heading-dot  pull-right">
+                            <button class="btn btn-danger pull-right" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </button>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
-                        <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
-                            <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                        <div class="col-sm-4 col-xs-4 heading-compose  pull-right">
+                            {{--<i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>--}}
+                            <button class="pull-right btn btn-success" aria-hidden="true">Add Friends</button>
                         </div>
                     </div>
 
@@ -44,7 +53,7 @@
                                                 <span class="name-meta">{!! $friend->name !!}</span>
                                             </div>
                                             <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                <span class="time-meta pull-right">18:18</span>
+                                                <span class="time-meta pull-right"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +72,7 @@
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
                             </div>
                             <div class="col-sm-10 col-xs-10 newMessage-title">
-                                New Chat
+                                All Users
                             </div>
                         </div>
                     </div>
@@ -78,30 +87,8 @@
                         </div>
                     </div>
 
-                    <div class="row compose-sideBar">
-                        @forelse($users as $user)
-                            <div class="row sideBar-body">
-                                <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                    <div class="avatar-icon">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                    </div>
-                                </div>
-                                <div class="col-sm-9 col-xs-9 sideBar-main">
-                                    <div class="row">
-                                        <div class="col-sm-8 col-xs-8 sideBar-name">
-                                            <span class="name-meta">{!! $user->name !!}</span>
-                                        </div>
-                                        <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                            <span class="time-meta pull-right">18:18</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                            <h1>Nothing to display</h1>
-                        @endforelse
 
-                    </div>
+                    <add-friends></add-friends>
                 </div>
             </div>
 
@@ -697,6 +684,6 @@
     }
     }
     .row{
-        display: block;
+    display: block;
     }
 @stop

@@ -20,6 +20,7 @@ Vue.prototype.$eventBus = new Vue();
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('message-list', require('./components/chat/message-list.vue'));
 Vue.component('create-message', require('./components/chat/create-message.vue'));
+Vue.component('add-friends', require('./components/chat/add-friends.vue'));
 
 const app = new Vue({
     el: '#app'
